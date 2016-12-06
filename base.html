@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="test1"></div>
+	<div id="test2"></div>
+	<div id="test3"></div>
+	<div id="test4"></div>
+	<div id="test5"></div>
+	
+    <script type="text/babel">
+	
+		var Stuff = React.createClass({
+			render: function(){
+				return (<h1> HEJHEJHEJ </h1>);
+			}
+		  }); 
+		  
+		var Nested = React.createClass({
+			render: function(){
+				return (
+					<div>
+						<h1> Flera grejer kan returneras om de har en förälder såsom en DIV </h1>
+						<p> Om man sedan ska upprepa funktionen så kan man också göra det med en DIV i render() </p>
+					</div>
+				);
+			}
+		  }); 
+		  
+		  
+		var Spel = React.createClass({
+			render: function(){
+				return (
+					<div>
+						<h1> {this.props.titel} </h1>
+						<h2> {this.props.utvecklare} </h2>
+						<p>  {this.props.beskrivning} </p>
+						<p>  {this.props.plattformar} </p>
+						<p> Genre </p>
+					</div>
+				);
+			}
+		  }); 
+			
+
+		  ReactDOM.render(<h1>Rendera mig!</h1>, document.getElementById('test1'));
+		  ReactDOM.render(<input type="submit" value="Submit"/>, document.getElementById('test2'));
+		  ReactDOM.render(<Stuff/>, document.getElementById('test3'));
+		  ReactDOM.render(<div> <Nested/> <Nested/> <Nested/> </div>, document.getElementById('test4'));
+		  ReactDOM.render(<div> 
+								<Spel titel="Trails of Cold Steel III" utvecklare="Falcom" beskrivning="Via this.props.xxx så får man tillgång till properties inom funktionen"
+								plattformar="PC/PS4"/>
+								<Spel titel="A Darker Shade of Magic" utvecklare="superspel" beskrivning="Man kan rendera flera spel som barn till en div. Då kan spelen ha olika props"
+								plattformar="Nintendo Switch"/> 
+								<Spel titel="Emma" utvecklare="yjtyt" beskrivning="Det här är ganska smidigt"
+								plattformar="PC/PS4"/> 
+						  </div>, document.getElementById('test5'));
+
+    </script>
+  </body>
+</html>
